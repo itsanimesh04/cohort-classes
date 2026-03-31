@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="firtst number"></input> <br><br>
+    <input type="text" placeholder="second button"></input> <br><br>
+    <button>Calclate Sum</button>
+    <p class="sum"></p>
+
+    <script>
+        const button = document.querySelector('button');
+        button.addEventListener('click', function() {
+            const inputs = document.querySelectorAll('input');
+            const num1 = parseFloat(inputs[0].value);
+            const num2 = parseFloat(inputs[1].value);
+            const sum = num1 + num2;
+            const sumParagraph = document.getElementsByClassName('sum')[0];
+            sumParagraph.innerHTML = `<strong>Sum:</strong> ${sum}`;
+
+            // diff b/w innerHTML and textContent
+            // innerHTML can parse HTML tags, while textContent treats them as plain text.
+            
+        });
+    </script>
+</body>
+</html>

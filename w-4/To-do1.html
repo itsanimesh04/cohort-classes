@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="tittle" type="text" placeholder="Tittle"></input> <br><br>
+    <input id="description" type="text" placeholder="Description"></input> <br><br>
+    <button onclick="addTodo()">Add todo</button>
+    <div id="todos"></div>
+
+    <script>
+        let globalID = 1;
+
+        function markDone(id){
+            todo = document.getElementById(id);
+            todo.style.textDecoration = 'line-through';
+            todo.children[2].disabled = true;
+        }
+
+        function createTodo(tittle, description, id){
+            const todo = document.createElement('div');
+            todo.setAttribute('id', id);
+            const tittleElement = document.createElement('h3'); 
+            tittleElement.innerText = tittle;
+            todo.appendChild(tittleElement);
+            const descriptionElement = document.createElement('p'); 
+            descriptionElement.innerText = description;
+            todo.appendChild(descriptionElement);
+            const markDoneButton = document.createElement('button');
+            markDoneButton.innerText = 'Mark done';
+            markDoneButton.setAttribute('onclick', `markDone(${id})`);
+            todo.appendChild(markDoneButton);
+            return todo;
+        }
+
+
+        function addTodo(){
+            const tittle = document.getElementById('tittle').value;
+            const description = document.getElementById('description').value;
+            const parent = document.getElementById('todos');
+            parent.appendChild(createTodo(tittle, description, globalID++));
+        }
+    </script>
+</body>
+</html>

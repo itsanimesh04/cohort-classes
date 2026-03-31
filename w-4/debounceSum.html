@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input oninput="delayedSumCalculator()" type="text" placeholder="firts number"></input> <br><br>
+    <input oninput="delayedSumCalculator()" type="text" placeholder="second button"></input> <br><br>
+    <p id="sum"></p>
+
+    <script>
+        let timeout;
+        function delayedSumCalculator(){
+            clearTimeout(timeout);
+            timeout = setTimeout(()=>{
+                SumCalculator();
+            },100);
+           
+        }
+
+        function SumCalculator(){
+            const inputs = document.querySelectorAll('input');
+            const num1 = parseFloat(inputs[0].value) || 0 ;
+            const num2 = parseFloat(inputs[1].value) || 0;
+            const sum = num1 + num2;
+            
+            document.getElementById('sum').innerHTML = `<strong>Sum:</strong> ${sum}`;
+        }
+         
+    </script>
+</body>
+</html>
