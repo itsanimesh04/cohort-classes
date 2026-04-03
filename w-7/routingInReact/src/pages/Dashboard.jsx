@@ -1,5 +1,5 @@
 function Dashboard(){
-    return <>dashboard </>;
+    return <>Dashboard </>;
 }
 
 
